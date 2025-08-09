@@ -75,25 +75,40 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: <%= ENV.fetch("DB_HOST", "localhost") %>
+  port: <%= ENV.fetch("DB_PORT", "5432") %>
+  username: <%= ENV.fetch("DB_USERNAME", "postgres") %>
+  password: <%= ENV.fetch("DB_PASSWORD", "postgres") %>
 
 development:
   <<: *default
   database: sm_pizza_backend_development
-  username: postgres
-  password: postgres # Change this to your PostgreSQL password
-  host: localhost
-  port: 5432
 
 test:
   <<: *default
   database: sm_pizza_backend_test
-  username: postgres
-  password: postgres # Change this to your PostgreSQL password
-  host: localhost
-  port: 5432
 ```
 
-**Note**: Update the `username` and `password` in `database.yml` to match your local PostgreSQL configuration.
+### 4. Environment Configuration
+
+Create a `.env` file in the root directory with your database credentials:
+
+```bash
+# Database Configuration
+DB_HOST=localhost
+DB_PORT=5432
+DB_USERNAME=username
+DB_PASSWORD=password
+
+# Rails Configuration  
+RAILS_MASTER_KEY=your-master-key-from-config-master-key
+RAILS_ENV=development
+
+# Server Configuration
+PORT=3001
+```
+
+**Note**: Update the `username`, `password`, `host` and `port` in `database.yml` to match your local PostgreSQL configuration.
 
 ### 4. Database Setup
 
@@ -106,16 +121,7 @@ rails db:migrate
 rails db:seed
 ```
 
-### 5. Environment Configuration
-
-Create a `.env` file in the root directory (optional for development):
-
-```bash
-DATABASE_URL=postgresql://postgres:postgres@localhost:5432/sm_pizza_backend_development
-RAILS_MASTER_KEY=<your-master-key>
-```
-
-### 6. Start the Server
+### 5. Start the Server
 
 ```bash
 # Development server
@@ -125,7 +131,7 @@ rails server -p 3001
 PORT=3001 bin/dev
 ```
 
-The API will be available at `http://localhost:3001`
+The API will be available at `http://localhost:3001` (or the port specified in your .env file)
 
 ## Running Tests
 
