@@ -67,30 +67,6 @@ bundle install
 
 ### 3. Database Configuration
 
-After installing PostgreSQL, you need to configure the database connection in `config/database.yml`:
-
-```yaml
-# config/database.yml
-default: &default
-  adapter: postgresql
-  encoding: unicode
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  host: <%= ENV.fetch("DB_HOST", "localhost") %>
-  port: <%= ENV.fetch("DB_PORT", "5432") %>
-  username: <%= ENV.fetch("DB_USERNAME", "postgres") %>
-  password: <%= ENV.fetch("DB_PASSWORD", "postgres") %>
-
-development:
-  <<: *default
-  database: sm_pizza_backend_development
-
-test:
-  <<: *default
-  database: sm_pizza_backend_test
-```
-
-### 4. Environment Configuration
-
 Create a `.env` file in the root directory with your database credentials:
 
 ```bash
