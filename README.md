@@ -84,7 +84,7 @@ RAILS_ENV=development
 PORT=3001
 ```
 
-**Note**: Update the `username`, `password`, `host` and `port` in `database.yml` to match your local PostgreSQL configuration.
+**Note**: Update the `username`, `password`, `host` and `port` in `.env` to match your local PostgreSQL configuration.
 
 ### 4. Database Setup
 
