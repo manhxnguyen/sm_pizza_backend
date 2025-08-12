@@ -65,6 +65,8 @@ group :development, :test do
   gem "faker"
   gem "shoulda-matchers"
   gem "database_cleaner-active_record"
+  gem 'rubocop'
+  gem 'rubocop-rspec'
 end
 
 group :test do
