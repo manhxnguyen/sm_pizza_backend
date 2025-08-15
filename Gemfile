@@ -26,6 +26,8 @@ gem "redis"
 # API versioning and serialization
 gem "jsonapi-serializer"
 
+gem 'dotenv-rails', groups: [:development, :test, :production]
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 
